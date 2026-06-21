@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:controls="using:Dock.Model.Mvvm.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mvvm="using:Dock.Model.Mvvm"
+        xmlns:lang="using:SlashX.Language"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SlashX.UI.AppMainWindow"
+        Title="{DynamicResource LOC_SLASHX_NAME}">
+    <DockPanel VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch"
+                >
+        <Menu DockPanel.Dock="Top" x:Name="MenuRoot">
+            <MenuItem Header="{DynamicResource LOC_MENU_ITEM_FILE}" x:Name="FileMenuItem">
+                <Separator />
+                <MenuItem Header="{DynamicResource LOC_MENU_ITEM_FILE_EXIT}" 
+                          InputGesture="Alt+F4" 
+                          x:Name="FileMenu_Exit" />
+            </MenuItem>
+            <MenuItem Header="{DynamicResource LOC_MENU_ITEM_WINDOWS}" x:Name="WindowsMenuItem">
+                
+            </MenuItem>
+            <MenuItem Header="{DynamicResource LOC_MENU_ITEM_HELP}" x:Name="HelpMenuItem">
+                <Separator />
+                <MenuItem Header="{DynamicResource LOC_MENU_ITEM_HELP_ABOUTAVALONIA}" Click="OnAboutAvaloniaClick" />
+                <MenuItem Header="{DynamicResource LOC_MENU_ITEM_HELP_ABOUT}" Click="OnAboutClick" />
+            </MenuItem>
+
+        </Menu>
+        <Border DockPanel.Dock="Top"
+                Background="{DynamicResource SystemControlBackgroundChromeMediumBrush}"
+                BorderBrush="{DynamicResource SystemControlForegroundChromeDisabledBrush}"
+                BorderThickness="0,0,0,1">
+                <Grid ColumnDefinitions="Auto,*,Auto" Margin="4,0">
+                    
+                </Grid>
+        </Border>
+        <DockControl InitializeFactory="True" 
+                     VerticalAlignment="Stretch" 
+                     HorizontalAlignment="Stretch"
+               x:Name="DockController">
+                <DockControl.Factory>
+              <mvvm:Factory />
+            </DockControl.Factory>
+        </DockControl>
+    </DockPanel>
+  
+</Window>

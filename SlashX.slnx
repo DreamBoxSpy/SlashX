@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/Build/">
+    <Project Path="build/_build.csproj" />
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="SlashX.Debug/SlashX.Debug.csproj" Id="144dc87e-4ac6-4fe3-a985-f80ad1fcdb78" />
+    <Project Path="SlashX.Shell/SlashX.Shell.csproj" />
+    <Project Path="SlashX/SlashX.csproj" />
+  </Folder>
+  <Folder Name="/Modules/">
+    <Project Path="SlashX.Language/SlashX.Language.csproj" Id="05aa7453-e7b1-4094-9302-a0c893913e56" />
+    <Project Path="SlashX.UI/SlashX.UI.csproj" Id="af7ca73f-dd2d-4047-87b4-2d42ca6fee10" />
+  </Folder>
+</Solution>

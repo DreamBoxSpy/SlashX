@@ -1,0 +1,21 @@
+
+<Project>
+  <PropertyGroup Condition="'$(IsSlashXModule)' == 'true'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>$(ModulePackagePath)</PackageOutputPath>
+  </PropertyGroup>
+
+  <Target Name="InstallModule" Condition="'$(Configuration)' == 'Debug'"
+          AfterTargets="Pack">
+    <PropertyGroup>
+      <ModulePackageUnpackDir>$(ModulePackageCachePath)/$(AssemblyName.ToLowerInvariant)</ModulePackageUnpackDir>
+      <NupkgOutput>$(PackageOutputPath)/$(AssemblyName).$(Version).nupkg</NupkgOutput>
+    </PropertyGroup>
+    
+    <RemoveDir Directories="$(ModulePackageUnpackDir)" />
+    
+    <Unzip SourceFiles="$(NupkgOutput)"
+        DestinationFolder="$(ModulePackageUnpackDir)/$(Version)"
+        SkipUnchangedFiles="true" />
+  </Target>
+</Project>

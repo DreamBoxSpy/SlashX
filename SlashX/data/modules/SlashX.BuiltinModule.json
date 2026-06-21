@@ -1,0 +1,6 @@
+{
+  "IsEnabled": true,
+  "modules": {
+    "SlashX.UI": "0.0.1"
+  }
+}

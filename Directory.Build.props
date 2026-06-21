@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>0.0.1</Version>
+    <Nullable>enable</Nullable>
+    <Company>SlashX</Company>
+    <Authors>HKLab</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BinRoot>$(MSBuildThisFileDirectory)bin/$(Configuration)/</BinRoot>
+
+    <BuildOutputRoot>$(BinRoot)build/</BuildOutputRoot>
+    <PublishRoot>$(BinRoot)publish/</PublishRoot>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <ModulePackagePath>$(BuildOutputRoot)data/packages</ModulePackagePath>
+    <ModulePackageCachePath>$(BuildOutputRoot)data/libraries</ModulePackageCachePath>
+  </PropertyGroup>
+  <PropertyGroup  Condition="'$(Configuration)' == 'Release'">
+    <ModulePackagePath>$(PublishRoot)data/packages</ModulePackagePath>
+  </PropertyGroup>
+</Project>
