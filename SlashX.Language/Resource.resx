@@ -144,4 +144,7 @@
   <data name="MENU_ITEM_HELP_ABOUTAVALONIA" xml:space="preserve">
     <value>About Avalonia</value>
   </data>
+  <data name="ABOUT_VIEW_REPOSITORY" xml:space="preserve">
+    <value>View Repository</value>
+  </data>
 </root>

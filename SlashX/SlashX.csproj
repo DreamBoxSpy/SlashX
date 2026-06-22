@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
+    <ApplicationIcon>../logo/logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

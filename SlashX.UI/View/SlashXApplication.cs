@@ -50,6 +50,7 @@ namespace SlashX.UI.View
                 ApplyLanguage();
             });
 
+
             Styles.Add(new DockFluentTheme());
             Styles.Add(new FluentTheme());
 

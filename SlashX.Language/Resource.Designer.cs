@@ -61,6 +61,15 @@ namespace SlashX.Language {
         }
         
         /// <summary>
+        ///   查找类似 View Repository 的本地化字符串。
+        /// </summary>
+        public static string ABOUT_VIEW_REPOSITORY {
+            get {
+                return ResourceManager.GetString("ABOUT_VIEW_REPOSITORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Welcome 的本地化字符串。
         /// </summary>
         public static string DOCUMENT_TITLE_WELCOME {

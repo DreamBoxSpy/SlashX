@@ -11,4 +11,7 @@
     <Project Path="SlashX.Language/SlashX.Language.csproj" Id="05aa7453-e7b1-4094-9302-a0c893913e56" />
     <Project Path="SlashX.UI/SlashX.UI.csproj" Id="af7ca73f-dd2d-4047-87b4-2d42ca6fee10" />
   </Folder>
+  <Folder Name="/Other/">
+    <File Path="README.md" />
+  </Folder>
 </Solution>

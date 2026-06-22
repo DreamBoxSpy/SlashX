@@ -5,7 +5,9 @@
     <Version>0.0.1</Version>
     <Nullable>enable</Nullable>
     <Company>SlashX</Company>
-    <Authors>HKLab</Authors>
+    <ProductName>SlashX</ProductName>
+    <License>MIT</License>
+    <RepositoryUrl>https://github.com/DreamBoxSpy/SlashX</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>

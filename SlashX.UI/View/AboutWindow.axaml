@@ -2,9 +2,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="using:SlashX.UI.Model"
+        x:DataType="model:AboutWindowModel"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        CanResize="False"
         Width="400" Height="450"
         x:Class="SlashX.UI.AboutWindow"
         Title="{DynamicResource LOC_WINDOW_TITLE_ABOUT}">
-  Welcome to Avalonia!
+    <StackPanel VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch"
+                Orientation="Vertical">
+        <Image Source="/Assets/logo.png" Width="200" Height="200" Margin="32" />
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock FontSize="24"  Text="SlashX " FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+            <TextBlock FontSize="12"
+                Text="{Binding AppVersion}"
+                HorizontalAlignment="Center" />
+             <TextBlock FontSize="12"  Text="MIT LICENSE"
+                       HorizontalAlignment="Center" />
+        </StackPanel>
+        <Button Content="{DynamicResource LOC_ABOUT_VIEW_REPOSITORY}"
+                HorizontalAlignment="Center" 
+                Margin="32" 
+                Click="OnViewRepositoryClick"/>
+    </StackPanel>
 </Window>

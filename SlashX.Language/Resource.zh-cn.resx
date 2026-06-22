@@ -144,4 +144,7 @@
   <data name="MENU_ITEM_HELP_ABOUTAVALONIA" xml:space="preserve">
     <value>关于 Avalonia</value>
   </data>
+  <data name="ABOUT_VIEW_REPOSITORY" xml:space="preserve">
+    <value>在 Github 上查看</value>
+  </data>
 </root>

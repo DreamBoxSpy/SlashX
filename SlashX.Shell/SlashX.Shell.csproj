@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-
     <PublishDir>$(PublishRoot)</PublishDir>
+    <ApplicationIcon>../logo/logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
