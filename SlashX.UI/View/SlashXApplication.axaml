@@ -1,0 +1,21 @@
+<Application  xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="using:SlashX.UI.View"
+        x:Class="SlashX.UI.View.SlashXApplication">
+    <Application.Styles>
+        <FluentTheme DensityStyle="Compact" />
+        <DockFluentTheme DensityStyle="Compact" />
+    </Application.Styles>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://Dock.Avalonia.Themes.Fluent/Presets/Ide/VsCodeDark.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+    <Application.DataTemplates>
+        
+    </Application.DataTemplates>
+</Application>

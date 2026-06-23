@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Microsoft.Extensions.DependencyInjection;
 using SlashX.Services.Interfaces;
-using SlashX.UI.Services.Interfaces;
 using SlashX.UI.View;
 using SlashX.UI.ViewModel;
 using System;
@@ -16,7 +15,6 @@ namespace SlashX.UI.Services
         ) : IApplicationDefault
     {
 
-        // Avalonia Designer
         public static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure<SlashXApplication>()
             .UsePlatformDetect()
             .WithInterFont()
@@ -28,12 +26,10 @@ namespace SlashX.UI.Services
                 .AfterSetup(builder =>
                 {
                     var app = (SlashXApplication?)builder.Instance;
-
+                    
                     Debug.Assert(app != null);
 
-                    app.Service = service;
-
-                    app.DataContext = new SlashXApplicationViewModel();
+                    app.DataContext = service.GetService<SlashXApplicationViewModel>();
                 });
 
             app.StartWithClassicDesktopLifetime(Environment.GetCommandLineArgs(), Avalonia.Controls.ShutdownMode.OnMainWindowClose);
@@ -41,7 +37,7 @@ namespace SlashX.UI.Services
         }
         public static void Main()
         {
-
+            // For Avalonia Designer
         }
     }
 }

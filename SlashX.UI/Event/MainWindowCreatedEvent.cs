@@ -8,6 +8,5 @@ namespace SlashX.UI.Event
 {
     public class MainWindowCreatedEvent : EventArgs
     {
-        public required Window MainWindow { get; init; }
     }
 }

@@ -31,4 +31,8 @@
     <ProjectReference Include="..\SlashX\SlashX.csproj" Exclude="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
+
 </Project>

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SlashX.UI.ViewModel
 {
-    internal partial class AboutWindowViewModel : ViewModelBase<AboutWindowModel>
+    internal partial class AboutWindowViewModel: ViewModelBase
     {
         public string AppVersion { get; }
 

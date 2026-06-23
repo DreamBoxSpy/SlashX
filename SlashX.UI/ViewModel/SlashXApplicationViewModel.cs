@@ -1,5 +1,7 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using SlashX.Language;
 using SlashX.UI.Event;
 using SlashX.UI.Model;
@@ -11,9 +13,17 @@ using System.Text;
 
 namespace SlashX.UI.ViewModel
 {
-    internal partial class SlashXApplicationViewModel : ViewModelBase<SlashXApplicationModel>
+    internal partial class SlashXApplicationViewModel(
+        IServiceProvider service,
+        SlashXApplicationModel? model
+        ) : ViewModelBase
     {
-        public void ApplyLanguage(Application app)
+        public SlashXApplicationViewModel(IServiceProvider service) : this(service, null) { }
+
+        public record VMInitializedParameter(Action<string, string> SetAppResource,
+                                        Action<Window> SetMainWindow);
+
+        public void ApplyLanguage(Action<string, string> setAppResource)
         {
             var rm = Resource.ResourceManager;
             foreach (var v in rm.GetResourceSet(CultureInfo.CurrentUICulture, true, true)!)
@@ -21,22 +31,29 @@ namespace SlashX.UI.ViewModel
                 if (v is DictionaryEntry entry &&
                     entry.Value is string str)
                 {
-                    app.Resources["LOC_" + entry.Key] = str;
+                    setAppResource("LOC_" + entry.Key, str);
                 }
             }
         }
 
         [RelayCommand]
-        public void Initialized(Application app)
+        public void Initialized(VMInitializedParameter parameter)
         {
-            Model?.OnCultureChanged(() => ApplyLanguage(app));
+            model?.OnCultureChanged(() => ApplyLanguage(parameter.SetAppResource));
 
-            Model?.PublishAppInitialized(app, new()
+            model?.PublishAppInitialized(this);
+
             {
-                Application = app
-            });
+                var mainWindow = new AppMainWindow()
+                {
+                    DataContext = service.GetRequiredService<AppMainWindowViewModel>()
+                };
+                parameter.SetMainWindow(mainWindow);
 
-            ApplyLanguage(app);
+                model?.PublishMainWindowCreatedEvent(this);
+            }
+
+            ApplyLanguage(parameter.SetAppResource);
         }
     }
 }

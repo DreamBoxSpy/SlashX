@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using SlashX.UI.Model;
+using SlashX.UI.ViewModel;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -15,7 +16,7 @@ public partial class AboutWindow : Window
     {
         InitializeComponent();
 
-        DataContext = new AboutWindowModel();
+        DataContext = new AboutWindowViewModel();
     }
 
     private async void OnViewRepositoryClick(object? sender, RoutedEventArgs e)

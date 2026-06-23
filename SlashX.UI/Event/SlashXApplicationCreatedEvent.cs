@@ -7,6 +7,6 @@ namespace SlashX.UI.Event
 {
     public class SlashXApplicationCreatedEvent : EventArgs
     {
-        public required Application Application { get; init; }
+        
     }
 }

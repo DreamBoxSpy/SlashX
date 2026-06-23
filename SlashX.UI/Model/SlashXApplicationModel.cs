@@ -11,13 +11,17 @@ namespace SlashX.UI.Model
         IEventBus bus
         )
     {
+        public void PublishMainWindowCreatedEvent(object? sender)
+        {
+            bus.Publish<MainWindowCreatedEvent>(sender, new());
+        }
         public void OnCultureChanged(Action callback)
         {
             bus.Subscribe<CurrentCultureChangedEvent>((_, _1) => callback());
         }
-        public void PublishAppInitialized(object? sender, SlashXApplicationCreatedEvent ev)
+        public void PublishAppInitialized(object? sender)
         {
-            bus.Publish(sender, ev);
+            bus.Publish<SlashXApplicationCreatedEvent>(sender, new());
         }
     }
 }

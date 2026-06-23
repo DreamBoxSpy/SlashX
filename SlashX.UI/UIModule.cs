@@ -6,7 +6,6 @@ using SlashX.Services.Interfaces;
 using SlashX.UI.Extensions;
 using SlashX.UI.Model;
 using SlashX.UI.Services;
-using SlashX.UI.Services.Interfaces;
 
 namespace SlashX.UI
 {
@@ -17,6 +16,7 @@ namespace SlashX.UI
             context.ServiceCollection.AddSingleton<IDockManager, DockManager>();
             context.ServiceCollection.AddSingleton<IApplicationDefault, ApplicationEntry>();
 
+            context.ServiceCollection.AddModelServices();
             context.ServiceCollection.AddViewModelServices();
         }
     }
