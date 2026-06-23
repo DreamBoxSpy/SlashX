@@ -133,6 +133,33 @@ namespace SlashX.Language {
         }
         
         /// <summary>
+        ///   查找类似 Load Workspace 的本地化字符串。
+        /// </summary>
+        public static string MENU_ITEM_WINDOWS_LOAD_WORKSPACE {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_WINDOWS_LOAD_WORKSPACE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Manage Workspace 的本地化字符串。
+        /// </summary>
+        public static string MENU_ITEM_WINDOWS_MANAGE_WORKSPACE {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_WINDOWS_MANAGE_WORKSPACE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Save Workspace 的本地化字符串。
+        /// </summary>
+        public static string MENU_ITEM_WINDOWS_SAVE_WORKSPACE {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_WINDOWS_SAVE_WORKSPACE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 SlashX 的本地化字符串。
         /// </summary>
         public static string SLASHX_NAME {

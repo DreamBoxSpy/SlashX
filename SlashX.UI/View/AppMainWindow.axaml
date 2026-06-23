@@ -16,13 +16,14 @@
                 <Separator />
                 <MenuItem Header="{DynamicResource LOC_MENU_ITEM_FILE_EXIT}" 
                           InputGesture="Alt+F4" 
-                          x:Name="FileMenu_Exit" />
+                          Click="OnFileMenuExitClick" />
             </MenuItem>
             <MenuItem Header="{DynamicResource LOC_MENU_ITEM_WINDOWS}" x:Name="WindowsMenuItem">
-                
+                <MenuItem Header="{DynamicResource LOC_MENU_ITEM_WINDOWS_SAVE_WORKSPACE}" />
+                <MenuItem Header="{DynamicResource LOC_MENU_ITEM_WINDOWS_LOAD_WORKSPACE}" />
+                <MenuItem Header="{DynamicResource LOC_MENU_ITEM_WINDOWS_MANAGE_WORKSPACE}" />
             </MenuItem>
             <MenuItem Header="{DynamicResource LOC_MENU_ITEM_HELP}" x:Name="HelpMenuItem">
-                <Separator />
                 <MenuItem Header="{DynamicResource LOC_MENU_ITEM_HELP_ABOUTAVALONIA}" Click="OnAboutAvaloniaClick" />
                 <MenuItem Header="{DynamicResource LOC_MENU_ITEM_HELP_ABOUT}" Click="OnAboutClick" />
             </MenuItem>

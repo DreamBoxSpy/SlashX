@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Dock.Model;
+using Dock.Model.Core;
+using Microsoft.Extensions.DependencyInjection;
 using SlashX.Abstractions;
 using SlashX.Services.Interfaces;
+using SlashX.UI.Extensions;
+using SlashX.UI.Model;
 using SlashX.UI.Services;
 using SlashX.UI.Services.Interfaces;
 
@@ -10,8 +14,10 @@ namespace SlashX.UI
     {
         public void Initialize(IModuleInitializeContext context)
         {
-            context.Services.AddSingleton<IApplicationDefault, ApplicationDefault>();
-            context.Services.AddSingleton<ISlashXApplication, ApplicationDefault>(s => (ApplicationDefault) s.GetRequiredService<IApplicationDefault>());
+            context.ServiceCollection.AddSingleton<IDockManager, DockManager>();
+            context.ServiceCollection.AddSingleton<IApplicationDefault, ApplicationEntry>();
+
+            context.ServiceCollection.AddViewModelServices();
         }
     }
 }

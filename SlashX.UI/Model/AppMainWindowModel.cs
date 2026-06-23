@@ -8,7 +8,7 @@ using System.Text;
 namespace SlashX.UI.Model
 {
 
-    internal partial class AppMainWindowModel : ObservableObject
+    internal partial class AppMainWindowModel
     {
         
     }

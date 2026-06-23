@@ -26,7 +26,7 @@ namespace SlashX.Services
             Options options
             ) : IModuleInitializeContext
         {
-            public IServiceCollection Services => options.ServiceCollections;
+            public IServiceCollection ServiceCollection => options.ServiceCollections;
 
             public IConfigurator CommandLineConfigurator => options.CommandLineConfigurator;
         }

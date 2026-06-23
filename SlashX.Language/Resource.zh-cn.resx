@@ -147,4 +147,13 @@
   <data name="ABOUT_VIEW_REPOSITORY" xml:space="preserve">
     <value>在 Github 上查看</value>
   </data>
+  <data name="MENU_ITEM_WINDOWS_LOAD_WORKSPACE" xml:space="preserve">
+    <value>加载窗口布局</value>
+  </data>
+  <data name="MENU_ITEM_WINDOWS_SAVE_WORKSPACE" xml:space="preserve">
+    <value>保存窗口布局</value>
+  </data>
+  <data name="MENU_ITEM_WINDOWS_MANAGE_WORKSPACE" xml:space="preserve">
+    <value>管理窗口布局</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SlashX.Services.Interfaces;
 using SlashX.UI.Services.Interfaces;
 using SlashX.UI.View;
+using SlashX.UI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,26 +11,31 @@ using System.Text;
 
 namespace SlashX.UI.Services
 {
-    internal class ApplicationDefault(
+    internal class ApplicationEntry(
         IServiceProvider service
-        ) : IApplicationDefault, ISlashXApplication
+        ) : IApplicationDefault
     {
-        public Application? Application { get; set; }
 
         // Avalonia Designer
-        public static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure(() => new SlashXApplication(null!, null!, null!))
+        public static AppBuilder BuildAvaloniaApp() => AppBuilder.Configure<SlashXApplication>()
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
 
-        private AppBuilder BuildApp() => AppBuilder.Configure(() => 
-            ActivatorUtilities.CreateInstance<SlashXApplication>(service))
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace();
         public int Run()
         {
-            var app = BuildApp();
+            var app = BuildAvaloniaApp()
+                .AfterSetup(builder =>
+                {
+                    var app = (SlashXApplication?)builder.Instance;
+
+                    Debug.Assert(app != null);
+
+                    app.Service = service;
+
+                    app.DataContext = new SlashXApplicationViewModel();
+                });
+
             app.StartWithClassicDesktopLifetime(Environment.GetCommandLineArgs(), Avalonia.Controls.ShutdownMode.OnMainWindowClose);
             return 0;
         }

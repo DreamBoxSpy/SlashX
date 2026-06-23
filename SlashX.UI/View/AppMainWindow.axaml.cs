@@ -64,14 +64,9 @@ public partial class AppMainWindow : Window
 
         DockController.Factory = factory;
         DockController.Layout = root;
-
-        FileMenu_Exit.Click += FileMenu_Exit_Click;
-
-        
-      
     }
 
-    private void FileMenu_Exit_Click(object? sender, RoutedEventArgs e)
+    private void OnFileMenuExitClick(object? sender, RoutedEventArgs e)
     {
         Close();
     }

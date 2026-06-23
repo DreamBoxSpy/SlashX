@@ -13,7 +13,7 @@ namespace SlashX.Abstractions
     }
     public interface IModuleInitializeContext
     {
-        IServiceCollection Services { get; }
+        IServiceCollection ServiceCollection { get; }
         IConfigurator CommandLineConfigurator { get; }
     }
 }

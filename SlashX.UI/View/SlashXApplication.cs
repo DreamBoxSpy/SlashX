@@ -11,6 +11,7 @@ using SlashX.Services.Interfaces;
 using SlashX.UI.Event;
 using SlashX.UI.Model;
 using SlashX.UI.Services.Interfaces;
+using SlashX.UI.ViewModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,63 +21,38 @@ using System.Text;
 
 namespace SlashX.UI.View
 {
-    internal class SlashXApplication(
-        ISlashXApplication app,
-        IEventBus bus,
-        IServiceProvider service
-        ) : Application
+    internal class SlashXApplication : Application, IServiceProviderApplication
     {
-        private void ApplyLanguage()
+        public IServiceProvider? Service { get; internal set; }
+
+
+        private void InitializeStyles()
         {
-            var rm = Resource.ResourceManager;
-            foreach(var v in rm.GetResourceSet(CultureInfo.CurrentUICulture, true, true)!)
-            {
-                if(v is DictionaryEntry entry &&
-                    entry.Value is string str)
-                {
-                    Resources["LOC_" + entry.Key] = str;
-                }
-            }
-        }
-
-        public override void OnFrameworkInitializationCompleted()
-        {
-            app?.Application = this;
-
-            ApplyLanguage();
-
-            bus?.Subscribe<CurrentCultureChangedEvent>((_, _1) =>
-            {
-                ApplyLanguage();
-            });
-
-
             Styles.Add(new DockFluentTheme());
             Styles.Add(new FluentTheme());
-
             Resources.MergedDictionaries.Add(new ResourceInclude((Uri?)null)
             {
                 Source = new Uri("avares://Dock.Avalonia.Themes.Fluent/Presets/Ide/VsCodeDark.axaml")
             });
-            
+        }
+        public override void OnFrameworkInitializationCompleted()
+        {
+            InitializeStyles();
+
+            Debug.Assert(DataContext != null);
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new AppMainWindow()
+                desktop.MainWindow = new AppMainWindow
                 {
-                    Bus = bus
+                    DataContext = new AppMainWindowViewModel()
                 };
 
-                if(service != null)
-                {
-                    desktop.MainWindow.DataContext = ActivatorUtilities.CreateInstance<AppMainWindowModel>(service);
-                }
             }
        
-            bus?.Publish<SlashXApplicationCreated>(this, new()
-            {
-                Application = this
-            }); 
-            
+            var vm = (SlashXApplicationViewModel)DataContext;
+            vm.InitializedCommand.Execute(this);
+
             base.OnFrameworkInitializationCompleted();
         }
 
